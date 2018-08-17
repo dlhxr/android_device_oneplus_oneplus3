@@ -30,7 +30,7 @@ LOCAL_SRC_FILES := \
 
 LOCAL_MODULE           := libmmlib2d_interface
 LOCAL_PRELINK_MODULE   := false
-LOCAL_SHARED_LIBRARIES := libdl libcutils liblog libmmcamera_interface
+LOCAL_SHARED_LIBRARIES := libdl libcutils liblog libmmcamera_interface libutils
 LOCAL_MODULE_TAGS := optional
 LOCAL_VENDOR_MODULE := true
 

@@ -30,6 +30,7 @@
 // System dependencies
 #include <pthread.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 // Camera dependencies
 #include "cam_semaphore.h"
