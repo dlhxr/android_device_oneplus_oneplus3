@@ -115,6 +115,7 @@ QCOM_BT_USE_SMD_TTY := true
 
 # Camera
 BOARD_QTI_CAMERA_32BIT_ONLY := true
+TARGET_USE_VENDOR_CAMERA_EXT := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Charger
@@ -229,10 +230,6 @@ include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(PLATFORM_PATH)/sepolicy/private
-
-# Shims
-TARGET_LD_SHIM_LIBS := \
-    /vendor/lib/hw/camera.msm8996.so|libcamera_shim.so
 
 # Thermal
 USE_DEVICE_SPECIFIC_THERMAL := true
