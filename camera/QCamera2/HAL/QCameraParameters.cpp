@@ -4009,8 +4009,10 @@ int32_t QCameraParameters::setQuadraCfa(const QCameraParameters& params)
     bool prev_quadracfa = getQuadraCfa();
     int32_t rc = NO_ERROR;
     int32_t value;
+    char quadra[PROPERTY_VALUE_MAX];
 
-    if (!m_pCapability->is_remosaic_lib_present) {
+    property_get("persist.camera.quadra.disabled", quadra, "1");
+    if (atoi(quadra) || !m_pCapability->is_remosaic_lib_present) {
         LOGD("Quadra CFA mode not supported");
         return rc;
     }
@@ -4028,7 +4030,11 @@ int32_t QCameraParameters::setQuadraCfa(const QCameraParameters& params)
         m_bQuadraCfa = FALSE;
     }
     value = m_bQuadraCfa;
+    #if 0
     if (prev_quadracfa == m_bQuadraCfa) {
+    #else
+    if ((prev_quadracfa == m_bQuadraCfa) && (m_bQuadraCfa && !isZSLMode())) {
+    #endif
         LOGD("No change in Quadra CFA mode");
     } else {
         if (m_bZslMode && m_bQuadraCfa) {
